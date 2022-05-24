@@ -1,10 +1,10 @@
 // Create an array of special characters and store to a variable
 
-var specialChar = ["(", ")", "*", "!", "@", "#", "$", "%", "^", "&", "*", "+", "-", "=", "/", ":", ";", ">", "?", "`", "~", "}", "|", "{", "_", "]", "[", "\"", "<", ".", "\'"];
+var special = ["(", ")", "*", "!", "@", "#", "$", "%", "^", "&", "*", "+", "-", "=", "/", ":", ";", ">", "?", "`", "~", "}", "|", "{", "_", "]", "[", "\"", "<", "."];
 
 // Create an array of numeric charecters and store it to a variable
 
-var num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+var num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 // Create an array of uppercase characters and store it to a variable
 
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -12,100 +12,56 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 // Ccreate an array of lowercase characters and store it to a variable
 
 var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var comboPassword = [];
 
 // ==========================================
 // Function to get options from user input
 
-function getUserInput() {
+// function getUserInput() {
+
+
+//   return userOptions;
+// }
+
+function generatePassword() {
 
   var passLength = window.prompt("Please enter a password length");
-  console.log(passLength);
-  console.log(typeof passLength);
   passLength = parseInt(passLength)
-  console.log(typeof passLength);
-  if (passLength < 8){
+  if (passLength < 8) {
     alert("password need to be equal or greater than 8 characters");
     return;
   }
-
-
   var specialChar = window.confirm("Do you want special characters in your password");
-  console.log(specialChar)
-
-
-  if (specialChar === true) {
-    console.log("yes")
-  }
-
   var numChar = window.confirm("Do you want Numeric characters in your password");
-  console.log(numChar)
-
-  if (numChar === true) {
-    console.log("yes")
-  }
-
   var lowerCaseChar = window.confirm("Do you want Lowercase characters in your password");
-  console.log(lowerCaseChar)
-
-  if (lowerCaseChar === true) {
-    console.log("yes")
-  }
-
   var upperCaseChar = window.confirm("Do you want Uppercase characters in your password");
-  console.log(upperCaseChar)
+  var finalPassword = "";
+  
+  if (specialChar) {
+    comboPassword = comboPassword.concat(special);
 
-  if (upperCaseChar === true) {
-    console.log("yes")
+  }
+  if (numChar) {
+    comboPassword = comboPassword.concat(num);
+  }
+  if (lowerCaseChar) {
+    comboPassword = comboPassword.concat(lowerCase);
+
+  }
+  if (upperCaseChar) {
+    comboPassword = comboPassword.concat(upperCase);
   }
 
-  var userOptions = {
-    length: passLength, 
-    specialOption: specialChar,
-    numOption: numChar,
-    lowerOption: lowerCaseChar,
-    upperOption: upperCaseChar
-  } ;
-  console.log(userOptions);
+  console.log(comboPassword);
 
-  return userOptions;
+
+  for (var i = 0; i < passLength; i++) {
+    finalPassword += comboPassword[Math.floor(Math.random() * comboPassword.length)];
+    console.log(finalPassword)
+  }
+
+  return finalPassword;
 }
-
-function generatePassword() {
-  
-    var storePassword = getUserInput();
-    var comboPassword = [];
-    var finalPassword = "";
-  
-  
-  
-    if (storePassword.asknumChar) {
-      for (var i of numChar)
-        comboPassword.push(i);
-    }
-    if (storePassword.asklowerCaseChar) {
-      for (var i of lowerCaseChar)
-        comboPassword.push(i);
-    }
-    if (storePassword.askupperCaseChar) {
-      for (var i of upperCaseChar)
-        comboPassword.push(i);
-    }
-    if (storePassword.askspecialChar) {
-      for (var i of specialChar)
-        comboPassword.push(i);
-    }
-  
-    console.log(comboPassword);
-  
-  
-    for (var i = 0; i < storePassword.length; i++) {
-      finalPassword += comboPassword[Math.floor(Math.random() * comboPassword.length)];
-      
-    }
-    console.log(finalPassword);
-  
-    return finalPassword;
-  }
 
 // Call user option function and store the return object to a variable
 
