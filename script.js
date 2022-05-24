@@ -66,7 +66,6 @@ function generatePassword() {
 // Call user option function and store the return object to a variable
 
 
-
 // Create a varialbe to be assigned with an empty array initially, to be populated by concatenating
 // all posiible character sets chosen by user
 
