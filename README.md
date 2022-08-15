@@ -1,4 +1,4 @@
-# Generate-Password-HW
+# Generate-Password-Demo
 
 ## Description
 
